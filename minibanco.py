@@ -1,34 +1,38 @@
+from time import sleep
 class Banco:
     def __init__(self, titular, saldo, senha):
-        self.titular = titular
+        self._titular = titular
         self._saldo = saldo
         self.__senha = senha
-        self.opcao = None
+        self._opcao = None
         
-    def decisao(self):
-        print("Esolha uma opção: \n1 - Vizualizar as informações da sua conta\n2 - Depositar dinheiro\n3 - Sacar dinheiro: ") 
-        decisão = int(input('Digite o número da sua escolha: '))
-        while True:
-            if decisão not in (1,2,3):
-                print("Essa decisão não é válida!")
-            else:
-                self.opcao = decisão
-                break
-            
-            decisão = int(input('Digite o número da sua escolha: '))
-        
+    def __str__(self):
+        return f"Titular: {self._titular} | Saldo: {self._saldo}"
     
-    def conta(self):
-        if self.opcao == 1:
-            print(f'informações da sua conta | Nome: {self.titular} | Saldo: {self.sa}')
-           
-   
-   
-nome = str(input('Digite seu nome: '))
-saldo = float(input('Digite o saldo da sua conta: '))
-senha = str(input('Digite a sua senha: '))        
+    def escolha(self):
+        while True:
+            print("BEM VINDO AO BANCO")
+            print()
+            print("Opção de ações:")
+            print()
+            print("1 - Ver informações da conta\n2 - Ver saldo da conta\n3 - Sair do programa")
+            self._opcao = int(input('Digite sua opção: '))
+            print("-"* 30)
+            if self._opcao == 1:
+                sleep(0.5)
+                print(self)
+                sleep(0.5)
+            if self._opcao == 2:
+                print(f"Seu saldo é de R${self._saldo}")
+                print('1 - Para depositar\n2 - Para sacar\n3 - Para sair: ')
+                saldo2 = int(input('Sua escolha:'))
+                if saldo2 == 1:
+                    valor = int(input('Informe o valor para depositar: '))
+                    self._saldo =   valor + self._saldo
+                    print(f'Saldo atual: {self._saldo}')
+    
+ 
+ 
+usuario1  = Banco("Marcos", 12567, "lakhbbsysmdd8d664n")
 
-usu1 = Banco(nome, saldo, senha) 
-
-usu1.decisao()
-usu1.conta()
+usuario1.escolha()
