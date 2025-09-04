@@ -14,6 +14,8 @@ class Restaurante:
          
     def __str__(self):
         return f"{self._nome} | {self._categoria} | {self.media_avaliacao()}" 
+    
+    
     @classmethod
     def listar_restaurantes(cls):
         print(f"{'Nome'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)} | Avaliação: ")
